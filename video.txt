@@ -1,0 +1,40 @@
+
+
+
+
+//Interagindo
+
+function calcularDistancia(npc, player) {
+    const distanciaX = Math.abs(npc.pX - player.pX);
+    const distanciaY = Math.abs(npc.pY - player.pY);
+    return distanciaX + distanciaY;
+}
+
+function verificarInteracaoComNPC() {
+    let npcMaisProximo = null;
+    const distanciaMaxima = 200;  
+
+    for (let npc of personagens) {
+        let distancia = calcularDistancia(npc, eu);
+        if (distancia < distanciaMaxima) {
+            npcMaisProximo = npc;
+            break; 
+        }
+    }
+    
+    if (npcMaisProximo != null) { 
+        interagirComNPC(npcMaisProximo);
+    }
+}
+
+function interagirComNPC(npc) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (npc === idoso) {
+        ctx.fillText("Interagindo com o Idoso!", 50, 150);
+    } else if (npc === cachorro) {
+        ctx.fillText("Interagindo com o Cachorro!", 50, 150);
+    } else if (npc === mina) {
+        ctx.fillText("Interagindo com a Mina!", 50, 150);
+    }
+}
